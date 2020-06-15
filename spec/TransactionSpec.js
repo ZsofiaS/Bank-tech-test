@@ -1,26 +1,24 @@
 'use strict';
 
 describe('Transaction', function() {
+  let trans = new Transaction();
+  
   it('has a credit of 0', function() {
-    let trans = new Transaction();
     expect(trans.credit).toEqual(0);
   })
   it('has a debit of 0', function() {
-    let trans = new Transaction();
     expect(trans.debit).toEqual(0);
   })
-  describe('#makeDeposit', function() {
+  describe('#recordDeposit', function() {
     it('returns an object with transaction details', function() {
-      let trans = new Transaction();
       spyOn(Date, 'now').and.returnValue(1592226530185);
-      expect(trans.recordDeposit(1000, 0)).toEqual({date: "15/06/2020", credit: "1000.00", debit: "", balance: "1000.00"})
+      expect(trans.recordDeposit(1000, 1000)).toEqual({date: "15/06/2020", credit: "1000.00", debit: "", balance: "1000.00"})
     })
   })
-  describe('#makeWithdrawal', function() {
+  describe('#recordWithdrawal', function() {
     it('returns an object with transaction details', function() {
-      let trans = new Transaction();
       spyOn(Date, 'now').and.returnValue(1592226530185);
-      expect(trans.recordWithdrawal(500, 1000)).toEqual({date: "15/06/2020", credit: "", debit: "500.00", balance: "500.00"})
+      expect(trans.recordWithdrawal(500, 500)).toEqual({date: "15/06/2020", credit: "", debit: "500.00", balance: "500.00"})
     })
   })
 })

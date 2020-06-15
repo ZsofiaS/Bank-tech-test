@@ -1,18 +1,19 @@
 'use strict';
 
 class Account {
-  constructor() {
+  constructor( trans = new Transaction()) {
     this.balance = 0;
     this.transactions = [];
+    this.trans = trans;
   }
-  makeDeposit(amount, trans = new Transaction()) {
-    let record = trans.recordDeposit(amount, this.balance)
+  makeDeposit(amount) {
     this.balance += amount;
+    let record = this.trans.recordDeposit(amount, this.balance)
     this.transactions.unshift(record);
   }
-  makeWithdrawal(amount, trans = new Transaction()) {
-    let record = trans.recordWithdrawal(amount, this.balance)
+  makeWithdrawal(amount) {
     this.balance -= amount;
+    let record = this.trans.recordWithdrawal(amount, this.balance)
     this.transactions.unshift(record);
   }
   printStatement() {
@@ -21,7 +22,6 @@ class Account {
     this.transactions.forEach((item, i) => {
       details = details + `${item.date} || ${item.credit} || ${item.debit} || ${item.balance}\n`
     });
-
     return header + details
   }
   _formatDate() {

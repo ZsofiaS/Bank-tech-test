@@ -6,24 +6,22 @@ class Transaction {
     this.debit = 0;
   }
   recordDeposit(amount, balance) {
-    balance += amount;
-    let trans = {
+    let record = {
       date: this._formatDate(),
       credit: this._formatAmount(amount),
       debit: "",
       balance: this._formatAmount(balance)
     }
-    return trans;
+    return record;
   }
   recordWithdrawal(amount, balance) {
-    balance -= amount;
-    let trans = {
+    let record = {
       date: this._formatDate(),
       credit: "",
       debit: this._formatAmount(amount),
       balance: this._formatAmount(balance)
     }
-    return trans;
+    return record;
   }
   _formatDate() {
     return new Date(Date.now()).toLocaleDateString();
