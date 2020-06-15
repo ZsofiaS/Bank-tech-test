@@ -15,11 +15,6 @@ describe('Account', function() {
       account.makeDeposit(1000);
       expect(account.balance).toEqual(1000);
     })
-    it('returns an object with transaction details', function() {
-      let account = new Account();
-      spyOn(Date, 'now').and.returnValue(1592226530185);
-      expect(account.makeDeposit(1000)).toEqual({date: "15/06/2020", credit: "1000.00", debit: "", balance: "1000.00"})
-    })
   })
   describe('#makeWithdrawal', function() {
     it('withdraws given amount from account', function() {

@@ -5,26 +5,15 @@ class Account {
     this.balance = 0;
     this.transactions = [];
   }
-  makeDeposit(amount) {
+  makeDeposit(amount, trans = new Transaction()) {
+    let record = trans.recordDeposit(amount, this.balance)
     this.balance += amount;
-    let trans = {
-      date: this._formatDate(),
-      credit: this._formatAmount(amount),
-      debit: "",
-      balance: this._formatAmount(this.balance)
-    }
-    this.transactions.unshift(trans);
-    return trans;
+    this.transactions.unshift(record);
   }
-  makeWithdrawal(amount) {
+  makeWithdrawal(amount, trans = new Transaction()) {
+    let record = trans.recordWithdrawal(amount, this.balance)
     this.balance -= amount;
-    let trans = {
-      date: this._formatDate(),
-      credit: "",
-      debit: this._formatAmount(amount),
-      balance: this._formatAmount(this.balance)
-    }
-    this.transactions.unshift(trans);
+    this.transactions.unshift(record);
   }
   printStatement() {
     let header = "date || credit || debit || balance \n";
@@ -41,5 +30,4 @@ class Account {
   _formatAmount(amount) {
     return amount.toFixed(2);
   }
-
 }

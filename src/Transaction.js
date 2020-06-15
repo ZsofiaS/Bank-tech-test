@@ -5,7 +5,7 @@ class Transaction {
     this.credit = 0;
     this.debit = 0;
   }
-  makeDeposit(amount, balance) {
+  recordDeposit(amount, balance) {
     balance += amount;
     let trans = {
       date: this._formatDate(),
@@ -15,7 +15,7 @@ class Transaction {
     }
     return trans;
   }
-  makeWithdrawal(amount, balance) {
+  recordWithdrawal(amount, balance) {
     balance -= amount;
     let trans = {
       date: this._formatDate(),
