@@ -18,7 +18,7 @@ describe('Account', function() {
     it('returns an object with transaction details', function() {
       let account = new Account();
       spyOn(Date, 'now').and.returnValue(1592226530185);
-      expect(account.makeDeposit(1000)).toEqual({date: "15/06/2020", credit: 1000, debit: "", balance: 1000})
+      expect(account.makeDeposit(1000)).toEqual({date: "15/06/2020", credit: "1000.00", debit: "", balance: "1000.00"})
     })
   })
   describe('#makeWithdrawal', function() {
@@ -33,7 +33,7 @@ describe('Account', function() {
       spyOn(Date, 'now').and.returnValue(1592226530185);
       account.makeDeposit(1000);
       account.makeWithdrawal(500);
-      expect(account.transactions).toContain({date: "15/06/2020", credit: "", debit: 500, balance: 500});
+      expect(account.transactions).toContain({date: "15/06/2020", credit: "", debit: "500.00", balance: "500.00"});
     })
   })
   describe('#printStatement', function() {
@@ -41,7 +41,7 @@ describe('Account', function() {
       let account = new Account();
       spyOn(Date, 'now').and.returnValue(1592226530185);
       account.makeDeposit(1000);
-      expect(account.printStatement()).toEqual("date || credit || debit || balance \n15/06/2020 || 1000 ||  || 1000\n");
+      expect(account.printStatement()).toEqual("date || credit || debit || balance \n15/06/2020 || 1000.00 ||  || 1000.00\n");
     })
   })
 })

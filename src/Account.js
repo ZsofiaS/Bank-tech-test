@@ -9,9 +9,9 @@ class Account {
     this.balance += amount;
     let trans = {
       date: this._formatDate(),
-      credit: amount,
+      credit: this._formatAmount(amount),
       debit: "",
-      balance: this.balance
+      balance: this._formatAmount(this.balance)
     }
     this.transactions.unshift(trans);
     return trans;
@@ -21,8 +21,8 @@ class Account {
     let trans = {
       date: this._formatDate(),
       credit: "",
-      debit: amount,
-      balance: this.balance
+      debit: this._formatAmount(amount),
+      balance: this._formatAmount(this.balance)
     }
     this.transactions.unshift(trans);
   }
@@ -37,6 +37,9 @@ class Account {
   }
   _formatDate() {
     return new Date(Date.now()).toLocaleDateString();
+  }
+  _formatAmount(amount) {
+    return amount.toFixed(2);
   }
 
 }
