@@ -1,33 +1,36 @@
 "use strict";
 
 class Account {
-  constructor( trans = new Transaction()) {
+  constructor( transaction = new Transaction()) {
     this.balance = 0;
     this.transactions = [];
-    this.transaction = trans;
+    this.transaction = transaction;
   }
   makeDeposit(amount) {
     this.balance += amount;
-    let record = this.transaction.recordDeposit(amount, this.balance)
+    let record = this.transaction.recordDeposit(amount, this.balance);
     this.transactions.unshift(record);
   }
   makeWithdrawal(amount) {
     this.balance -= amount;
-    let record = this.trans.recordWithdrawal(amount, this.balance)
+    let record = this.transaction.recordWithdrawal(amount, this.balance);
     this.transactions.unshift(record);
   }
   printStatement() {
     let header = "date || credit || debit || balance \n";
-    let details = ""
-    this.transactions.forEach((item, i) => {
-      details = details + `${item.date} || ${item.credit} || ${item.debit} || ${item.balance}\n`
-    });
-    return header + details
+    return header + this._showAllTransactions();
   }
   _formatDate() {
     return new Date(Date.now()).toLocaleDateString();
   }
   _formatAmount(amount) {
     return amount.toFixed(2);
+  }
+  _showAllTransactions() {
+    let listOfTransactions = "";
+    this.transactions.forEach((item) => {
+      listOfTransactions = listOfTransactions + `${item.date} || ${item.credit} || ${item.debit} || ${item.balance}\n`;
+    });
+    return listOfTransactions;
   }
 }
