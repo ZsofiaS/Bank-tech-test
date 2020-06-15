@@ -2,8 +2,6 @@
 
 class Transaction {
   constructor() {
-    this.credit = 0;
-    this.debit = 0;
   }
   recordDeposit(amount, balance) {
     let record = {

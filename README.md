@@ -29,9 +29,20 @@ date || credit || debit || balance
 ```
 
 ## How to use
+Open `SpecRunner.html` in the browser. This will run all the tests.
+
+In the browser console, create a new instance of account: `let account = new Account()`.  
+
+Call `makeDeposit()`, `makeWithdrawal()` and `printStatement()` methods on the instance, like so:
+
+![project in console](images/snip.PNG)
 
 ## Domain Model
 ![domain model](images/class.PNG)
+
+There are two classes: account and its dependency: transaction. They have distinct responsibilities in the code. The user only interacts with the account class and its methods directly.
+
+I initialised the project with Javascript and Jasmine, and TDD'd all code. I started out by having only one class for the account, but seeing that a transaction object is created whenever a deposit or withdrawal is done, I abstracted out the transaction.
 
 ## Flow diagram
 ![flow diagram](images/flow.PNG)

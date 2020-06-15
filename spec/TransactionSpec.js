@@ -3,12 +3,6 @@
 describe('Transaction', function() {
   let trans = new Transaction();
   
-  it('has a credit of 0', function() {
-    expect(trans.credit).toEqual(0);
-  })
-  it('has a debit of 0', function() {
-    expect(trans.debit).toEqual(0);
-  })
   describe('#recordDeposit', function() {
     it('returns an object with transaction details', function() {
       spyOn(Date, 'now').and.returnValue(1592226530185);

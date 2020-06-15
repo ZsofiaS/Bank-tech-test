@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
 class Account {
   constructor( trans = new Transaction()) {
     this.balance = 0;
     this.transactions = [];
-    this.trans = trans;
+    this.transaction = trans;
   }
   makeDeposit(amount) {
     this.balance += amount;
-    let record = this.trans.recordDeposit(amount, this.balance)
+    let record = this.transaction.recordDeposit(amount, this.balance)
     this.transactions.unshift(record);
   }
   makeWithdrawal(amount) {
