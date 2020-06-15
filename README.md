@@ -4,6 +4,8 @@ This is a practice tech test I did during Week 10 at Makers Academy.
 
 The goal is to produce high quality code while practicing OO desing and TDD skills.
 
+I used Javascript and Jasmine for testing.
+
 ## Specification
 
 #### Requirements
