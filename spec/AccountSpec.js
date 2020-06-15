@@ -27,6 +27,12 @@ describe('Account', function() {
       account.makeWithdrawal(500);
       expect(account.balance).toEqual(500);
     })
+    it('saves transaction details', function() {
+      let account = new Account();
+      account.makeDeposit(1000);
+      account.makeWithdrawal(500);
+      expect(account.transactions).toContain({credit: null, debit: 500, balance: 500});
+    })
   })
   describe('#printStatement', function() {
     it('prints the account statement', function() {

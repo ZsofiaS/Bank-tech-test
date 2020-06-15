@@ -17,6 +17,12 @@ class Account {
   }
   makeWithdrawal(amount) {
     this.balance -= amount;
+    let trans = {
+      credit: null,
+      debit: amount,
+      balance: this.balance
+    }
+    this.transactions.push(trans);
   }
   printStatement() {
     let header = "|| credit || debit || balance \n";
