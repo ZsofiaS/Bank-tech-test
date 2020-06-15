@@ -5,4 +5,7 @@ class Account {
     this.balance = 0;
     this.transactions = [];
   }
+  makeDeposit(amount) {
+    this.balance =+ amount;
+  }
 }
