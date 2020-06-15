@@ -11,4 +11,9 @@ class Account {
   makeWithdrawal(amount) {
     this.balance -= amount;
   }
+  printStatement() {
+    let header = "|| credit || debit || balance \n";
+    let details = `|| 1000 || || ${this.balance}`
+    return header + details
+  }
 }

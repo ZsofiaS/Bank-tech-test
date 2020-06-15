@@ -24,4 +24,11 @@ describe('Account', function() {
       expect(account.balance).toEqual(500);
     })
   })
+  describe('#printStatement', function() {
+    it('prints the account statement', function() {
+      let account = new Account();
+      account.makeDeposit(1000);
+      expect(account.printStatement()).toEqual("|| credit || debit || balance \n|| 1000 || || 1000");
+    })
+  })
 })
