@@ -16,4 +16,12 @@ describe('Account', function() {
       expect(account.balance).toEqual(1000);
     })
   })
+  describe('#makeWithdrawal', function() {
+    it('withdraws given amount from account', function() {
+      let account = new Account();
+      account.makeDeposit(1000);
+      account.makeWithdrawal(500);
+      expect(account.balance).toEqual(500);
+    })
+  })
 })
