@@ -7,13 +7,20 @@ class Account {
   }
   makeDeposit(amount) {
     this.balance += amount;
+    let trans = {
+      credit: amount,
+      debit: null,
+      balance: this.balance
+    }
+    this.transactions.push(trans);
+    return trans;
   }
   makeWithdrawal(amount) {
     this.balance -= amount;
   }
   printStatement() {
     let header = "|| credit || debit || balance \n";
-    let details = `|| 1000 || || ${this.balance}`
+    let details = `|| ${this.transactions[0].credit} || || ${this.balance}`
     return header + details
   }
 }

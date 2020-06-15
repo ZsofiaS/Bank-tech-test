@@ -15,6 +15,10 @@ describe('Account', function() {
       account.makeDeposit(1000);
       expect(account.balance).toEqual(1000);
     })
+    it('returns an object with transaction details', function() {
+      let account = new Account();
+      expect(account.makeDeposit(1000)).toEqual({credit: 1000, debit: null, balance: 1000})
+    })
   })
   describe('#makeWithdrawal', function() {
     it('withdraws given amount from account', function() {
