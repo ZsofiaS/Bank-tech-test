@@ -9,4 +9,11 @@ describe('Transaction', function() {
     let trans = new Transaction();
     expect(trans.debit).toEqual(0);
   })
+  describe('#makeDeposit', function() {
+    it('returns an object with transaction details', function() {
+      let trans = new Transaction();
+      spyOn(Date, 'now').and.returnValue(1592226530185);
+      expect(trans.makeDeposit(1000, 0)).toEqual({date: "15/06/2020", credit: "1000.00", debit: "", balance: "1000.00"})
+    })
+  })
 })
