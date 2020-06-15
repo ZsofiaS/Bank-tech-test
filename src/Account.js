@@ -8,29 +8,35 @@ class Account {
   makeDeposit(amount) {
     this.balance += amount;
     let trans = {
+      date: this._formatDate(),
       credit: amount,
       debit: "",
       balance: this.balance
     }
-    this.transactions.push(trans);
+    this.transactions.unshift(trans);
     return trans;
   }
   makeWithdrawal(amount) {
     this.balance -= amount;
     let trans = {
+      date: this._formatDate(),
       credit: "",
       debit: amount,
       balance: this.balance
     }
-    this.transactions.push(trans);
+    this.transactions.unshift(trans);
   }
   printStatement() {
-    let header = "|| credit || debit || balance \n";
+    let header = "date || credit || debit || balance \n";
     let details = ""
     this.transactions.forEach((item, i) => {
-      details = details + `|| ${item.credit} || ${item.debit} || ${this.balance}`
+      details = details + `${item.date} || ${item.credit} || ${item.debit} || ${item.balance}\n`
     });
 
     return header + details
   }
+  _formatDate() {
+    return new Date(Date.now()).toLocaleDateString();
+  }
+
 }
