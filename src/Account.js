@@ -9,7 +9,7 @@ class Account {
     this.balance += amount;
     let trans = {
       credit: amount,
-      debit: null,
+      debit: "",
       balance: this.balance
     }
     this.transactions.push(trans);
@@ -18,7 +18,7 @@ class Account {
   makeWithdrawal(amount) {
     this.balance -= amount;
     let trans = {
-      credit: null,
+      credit: "",
       debit: amount,
       balance: this.balance
     }
@@ -26,7 +26,11 @@ class Account {
   }
   printStatement() {
     let header = "|| credit || debit || balance \n";
-    let details = `|| ${this.transactions[0].credit} || || ${this.balance}`
+    let details = ""
+    this.transactions.forEach((item, i) => {
+      details = details + `|| ${item.credit} || ${item.debit} || ${this.balance}`
+    });
+
     return header + details
   }
 }
