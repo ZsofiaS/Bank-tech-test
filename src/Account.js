@@ -20,12 +20,6 @@ class Account {
     let header = "date || credit || debit || balance \n";
     return header + this._showAllTransactions();
   }
-  _formatDate() {
-    return new Date(Date.now()).toLocaleDateString();
-  }
-  _formatAmount(amount) {
-    return amount.toFixed(2);
-  }
   _showAllTransactions() {
     let listOfTransactions = "";
     this.transactions.forEach((item) => {
