@@ -37,7 +37,11 @@ describe('Account', function() {
       expect(account.balance).toEqual(1000);
     })
     it('saves transaction details', function() {
-      expect(account.transactions).toContain({date: "15/06/2020", credit: "1000.00", debit: "", balance: "1000.00"});
+      expect(account.transactions).toContain({
+        date: "15/06/2020",
+        credit: "1000.00",
+        debit: "",
+        balance: "1000.00"});
     })
   })
 
@@ -52,7 +56,11 @@ describe('Account', function() {
       expect(account.balance).toEqual(500);
     })
     it('saves transaction details', function() {
-      expect(account.transactions).toContain({date: "15/06/2020", credit: "", debit: "500.00", balance: "500.00"});
+      expect(account.transactions).toContain({
+        date: "15/06/2020",
+        credit: "",
+        debit: "500.00",
+        balance: "500.00"});
     })
   })
 
@@ -61,11 +69,15 @@ describe('Account', function() {
       account.makeDeposit(1000);
     })
     it('prints the transaction', function() {
-      expect(account.printStatement()).toEqual("date || credit || debit || balance \n15/06/2020 || 1000.00 ||  || 1000.00\n");
+      expect(account.printStatement()).toEqual(
+        "date || credit || debit || balance \n15/06/2020 || 1000.00 ||  || 1000.00\n"
+      );
     })
     it('prints account statement', function() {
       account.makeWithdrawal(500);
-      expect(account.printStatement()).toEqual("date || credit || debit || balance \n15/06/2020 ||  || 500.00 || 500.00\n15/06/2020 || 1000.00 ||  || 1000.00\n");
+      expect(account.printStatement()).toEqual(
+        "date || credit || debit || balance \n15/06/2020 ||  || 500.00 || 500.00\n15/06/2020 || 1000.00 ||  || 1000.00\n"
+      );
     })
   })
 })
