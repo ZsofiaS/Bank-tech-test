@@ -8,7 +8,7 @@ class Transaction {
       date: this._formatDate(),
       credit: this._formatAmount(amount),
       debit: "",
-      balance: this._formatAmount(balance)
+      balance: this._formatAmount(balance + amount)
     }
     return record;
   }
