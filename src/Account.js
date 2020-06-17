@@ -28,8 +28,7 @@ class Account {
     let numberOfTransactions = this.transactions.length;
     if (numberOfTransactions === 0 ) {
       return 0;
-    } else {
-      return Number(this.transactions[numberOfTransactions - 1].balance);
     }
+    return Number(this.transactions[numberOfTransactions - 1].balance);
   }
 }

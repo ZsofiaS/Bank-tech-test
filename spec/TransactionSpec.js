@@ -20,7 +20,7 @@ describe('Transaction', function() {
         date: "15/06/2020",
         credit: "",
         debit: "500.00",
-        balance: "500.00"})
+        balance: "0.00"})
     })
   })
 })
