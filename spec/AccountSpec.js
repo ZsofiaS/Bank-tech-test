@@ -74,10 +74,32 @@ describe('Account', function() {
       );
     })
     it('prints account statement', function() {
+
       account.makeWithdrawal(500);
+
       expect(account.printStatement()).toEqual(
         "date || credit || debit || balance \n15/06/2020 ||  || 500.00 || 500.00\n15/06/2020 || 1000.00 ||  || 1000.00\n"
       );
     })
+    it('prints full statement in reverse chronological order', function() {
+      double.recordDeposit.and.returnValue({
+        date: "15/06/2020",
+        credit: "2000.00",
+        debit: "",
+        balance: "3000.00"
+      })
+      double.recordWithdrawal.and.returnValue({
+        date: "17/06/2020",
+        credit: "",
+        debit: "500.00",
+        balance: "2500.00"
+      })
+      account.makeDeposit(2000);
+      account.makeWithdrawal(500);
+      expect(account.printStatement()).toEqual(
+        "date || credit || debit || balance \n17/06/2020 ||  || 500.00 || 2500.00\n15/06/2020 || 2000.00 ||  || 3000.00\n15/06/2020 || 1000.00 ||  || 1000.00\n");
+    })
   })
+
+
 })
