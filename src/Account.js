@@ -9,12 +9,12 @@ class Account {
   makeDeposit(amount) {
     this.balance += amount;
     let record = this.transaction.recordDeposit(amount, this.balance);
-    this.transactions.unshift(record);
+    this.transactions.push(record);
   }
   makeWithdrawal(amount) {
     this.balance -= amount;
     let record = this.transaction.recordWithdrawal(amount, this.balance);
-    this.transactions.unshift(record);
+    this.transactions.push(record);
   }
   printStatement() {
     let header = "date || credit || debit || balance \n";
@@ -22,7 +22,7 @@ class Account {
   }
   _showAllTransactions() {
     let listOfTransactions = "";
-    this.transactions.forEach((item) => {
+    this.transactions.reverse().forEach((item) => {
       listOfTransactions = listOfTransactions + `${item.date} || ${item.credit} || ${item.debit} || ${item.balance}\n`;
     });
     return listOfTransactions;
